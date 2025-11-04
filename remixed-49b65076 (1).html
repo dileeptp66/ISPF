@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISPF - Empowering Teachers. Inspiring Learners.</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #3E9DA3;
+            --secondary: #DEA057;
+            --dark: #2C3E50;
+            --light: #F8F9FA;
+            --white: #FFFFFF;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+        }
+
+        .header {
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, #2C7A7E 100%);
+            color: var(--white);
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 0.8s;
+        }
+
+        .hero-tagline {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--secondary);
+            font-weight: 600;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--secondary);
+            color: var(--white);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin: 0.5rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--secondary);
+            margin: 1rem auto;
+        }
+
+        .mission-vision {
+            background: var(--light);
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+
+        .card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline-item {
+            padding: 1.5rem;
+            background: var(--white);
+            border-left: 4px solid var(--primary);
+            margin-bottom: 2rem;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .timeline-item h4 {
+            color: var(--secondary);
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .team-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .team-card:hover {
+            transform: scale(1.05);
+        }
+
+        .team-card h4 {
+            color: var(--primary);
+            margin: 1rem 0 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .team-card .role {
+            color: var(--secondary);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial {
+            background: var(--light);
+            padding: 2rem;
+            border-left: 5px solid var(--secondary);
+            margin: 2rem 0;
+            border-radius: 5px;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            margin-top: 1rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .interventions {
+            background: var(--light);
+        }
+
+        .intervention-card {
+            background: var(--white);
+            padding: 2rem;
+            margin: 1.5rem 0;
+            border-radius: 10px;
+            border-top: 4px solid var(--primary);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .intervention-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .intervention-card h4 {
+            color: var(--secondary);
+            margin: 1rem 0 0.5rem;
+        }
+
+        .get-involved {
+            background: linear-gradient(135deg, var(--primary) 0%, #2C7A7E 100%);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .get-involved .section-title {
+            color: var(--white);
+        }
+
+        .get-involved .section-title::after {
+            background: var(--secondary);
+        }
+
+        .involvement-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .involvement-card {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            transition: background 0.3s;
+        }
+
+        .involvement-card:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .involvement-card h3 {
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 2rem auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .submit-button {
+            background: var(--primary);
+            color: var(--white);
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .submit-button:hover {
+            background: #2C7A7E;
+        }
+
+        .footer {
+            background: var(--dark);
+            color: var(--white);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer h3 {
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        .raman-award {
+            background: linear-gradient(135deg, var(--secondary) 0%, #C88945 100%);
+            color: var(--white);
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .raman-award .section-title {
+            color: var(--white);
+        }
+
+        .raman-award .section-title::after {
+            background: var(--white);
+        }
+
+        .award-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .award-feature {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .cards, .team-grid, .involvement-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">ISPF</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#mission">Mission</a></li>
+                <li><a href="#our-people">Our People</a></li>
+                <li><a href="#our-work">Our Work</a></li>
+                <li><a href="#get-involved">Get Involved</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>The Classroom in Action</h1>
+            <p class="hero-tagline">Empowering Teachers. Inspiring Learners.</p>
+            <p>Through hands-on STEM education and mentorship, ISPF strengthens teaching practices and transforms learning outcomes for every child.</p>
+            <a href="#get-involved" class="cta-button">Join Our Movement</a>
+        </div>
+    </section>
+
+    <section id="mission" class="section mission-vision">
+        <h2 class="section-title">Our Mission and Vision</h2>
+        <div class="cards">
+            <div class="card">
+                <h3>Vision</h3>
+                <p>Inclusive, Experiential, and Competency Education for Every K-10 Learner</p>
+            </div>
+            <div class="card">
+                <h3>Mission</h3>
+                <p>ISPF delivers accessible, curriculum-aligned, and engaging experiential STEM programmes that lay a strong foundation for every K-10 student with conceptual mastery, real-life connections, and essential competencies, including 21st-century skills and science and maths literacy needed for future careers.</p>
+            </div>
+        </div>
+
+        <div style="margin-top: 3rem;">
+            <h3 style="text-align: center; color: var(--primary); margin-bottom: 2rem;">Our Philosophy</h3>
+            <p style="max-width: 800px; margin: 0 auto;">We believe that learning is most powerful when it is experiential and curiosity becomes the starting point for discovery and knowledge creation. Our philosophy is rooted in the conviction that science and mathematics education must move beyond textbooks to engage the hands, mind, and heart of every learner.</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">Our History</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <h4>2022</h4>
+                <p>Raman Club programme sponsored by Synopsys</p>
+            </div>
+            <div class="timeline-item">
+                <h4>2023</h4>
+                <p>Raman Club programme sponsored by Tata Trust</p>
+            </div>
+            <div class="timeline-item">
+                <h4>2024</h4>
+                <p>Project Jigyaasa programme sponsored by Siemens</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="our-people" class="section" style="background: var(--light);">
+        <h2 class="section-title">Our People</h2>
+        <h3 style="text-align: center; color: var(--secondary); margin: 2rem 0;">Key Trustees</h3>
+        <div class="team-grid">
+            <div class="team-card">
+                <h4>Ravi Rangan S</h4>
+                <p class="role">Founder Trustee</p>
+                <p>Distinguished social entrepreneur with over 25 years of experience spanning IT services, BPO, e-governance, rural development, and education. Alumni of BITS Pilani with a Bachelor's in Engineering and Master's in Software Engineering.</p>
+            </div>
+            <div class="team-card">
+                <h4>Vishal Bhatt</h4>
+                <p class="role">Trustee & Strategic Lead, Learning and Capacity Building</p>
+                <p>IIT Delhi alumnus leading capacity-building initiatives for teachers and students. Co-founded ThinkTac in 2017, pioneering platform for experiential science education.</p>
+            </div>
+            <div class="team-card">
+                <h4>Dr Procheta Mallik</h4>
+                <p class="role">Trustee & Head of Research and Development</p>
+                <p>Scientist and educator with PhD in Astronomy from University of Glasgow. Heads R&D at ISPF, curating science and mathematics activities that integrate with school curricula.</p>
+            </div>
+        </div>
+
+        <h3 style="text-align: center; color: var(--secondary); margin: 3rem 0 2rem;">Key Team Members</h3>
+        <div class="cards">
+            <div class="card">
+                <h3>Chandan M S</h3>
+                <p>AVP - Outreach</p>
+            </div>
+            <div class="card">
+                <h3>Debadipa Mukhopadhyay</h3>
+                <p>Project Manager</p>
+            </div>
+            <div class="card">
+                <h3>Swathi G R</h3>
+                <p>Accounts Manager</p>
+            </div>
+            <div class="card">
+                <h3>Namrata Gaurav Sonavane</h3>
+                <p>Associate Program Manager</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">Our Beneficiaries</h2>
+        <div class="cards">
+            <div class="card">
+                <h3>Raman Clubs in Karnataka</h3>
+                <p><strong>Impact:</strong> 5,000+ students and 47 teachers across 43 government schools</p>
+                <div class="testimonial">
+                    "Before, I used to learn from books. Now, I understand because I make and see things work."
+                    <div class="testimonial-author">— Student, GHPS Haralahalli, Harihara</div>
+                </div>
+            </div>
+            <div class="card">
+                <h3>STEM Akriti Telangana</h3>
+                <p><strong>Impact:</strong> 6,000+ students across 44 government schools in Medchal and Ranga Reddy districts</p>
+                <div class="testimonial">
+                    "I never thought I could make a working headphone myself. Now I understand how sound travels and how electricity helps in making it work."
+                    <div class="testimonial-author">— Noveena, Grade 8, ZPHS Habsiguda</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="our-work" class="section interventions">
+        <h2 class="section-title">Our Work</h2>
+        <div class="intervention-card">
+            <h3>1. Experiential Education</h3>
+            <h4>Objective:</h4>
+            <p>To make science and mathematics learning engaging, accessible, and competency-based for K–10 students through experiential, curriculum-aligned STEM programmes.</p>
+            <h4>Approach:</h4>
+            <ul>
+                <li>Hands-on TACtivities (Tactile Activities) that make abstract concepts tangible</li>
+                <li>Curriculum integration for regular classroom use</li>
+                <li>Continuous monitoring through pre- and post-assessments</li>
+            </ul>
+        </div>
+
+        <div class="intervention-card">
+            <h3>2. Teacher Empowerment and Pedagogical Innovation</h3>
+            <h4>Objective:</h4>
+            <p>To build teacher capacity in inquiry-based and experiential pedagogy, enabling them to transform classrooms into spaces of discovery.</p>
+            <h4>Approach:</h4>
+            <ul>
+                <li>Structured teacher training workshops on experiential learning</li>
+                <li>Ongoing mentoring and academic support through the ISPF team</li>
+                <li>Access to digital learning resources in English and regional languages</li>
+            </ul>
+        </div>
+
+        <div class="intervention-card">
+            <h3>3. STEM Equity and Inclusion</h3>
+            <h4>Objective:</h4>
+            <p>To ensure equitable access to STEM education for all children, particularly girls and students from government schools.</p>
+            <h4>Approach:</h4>
+            <ul>
+                <li>CSR-funded programmes implemented free of cost to schools</li>
+                <li>Local-language content to improve accessibility</li>
+                <li>Mentorship and exposure opportunities for girl students and underrepresented groups</li>
+            </ul>
+        </div>
+
+        <div class="intervention-card">
+            <h3>4. Community and CSR Partnerships</h3>
+            <h4>Objective:</h4>
+            <p>To collaborate with CSR foundations, government departments, and NGOs to scale experiential learning and create systemic change.</p>
+            <h4>Approach:</h4>
+            <ul>
+                <li>Co-designed, outcome-oriented programmes with CSR and government partners</li>
+                <li>Data-driven reporting to demonstrate learning impact</li>
+                <li>Shared ownership with local stakeholders</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="raman-award">
+        <h2 class="section-title">Raman Award</h2>
+        <p style="font-size: 1.3rem; max-width: 800px; margin: 0 auto 2rem;">Celebrating Curiosity. Honouring Innovation.</p>
+        <p style="max-width: 800px; margin: 0 auto;">The Raman Award recognises school students who demonstrate creativity, curiosity, and scientific understanding through hands-on experiments and models that explain real-world science.</p>
+        
+        <div class="award-features">
+            <div class="award-feature">
+                <h3>Who Can Participate</h3>
+                <p>Open to students from Grades 3–10 in schools across India</p>
+            </div>
+            <div class="award-feature">
+                <h3>What We Celebrate</h3>
+                <p>Originality, creativity, clarity of concept, and practical demonstration</p>
+            </div>
+            <div class="award-feature">
+                <h3>Recognition</h3>
+                <p>Cash awards, free ThinkTac subscription, and mentoring opportunities</p>
+            </div>
+        </div>
+        <div style="margin-top: 2rem;">
+            <p><strong>Learn more:</strong> www.ramanaward.org | WhatsApp: +917483945803 | Email: info@ispf.in</p>
+        </div>
+    </section>
+
+    <section id="get-involved" class="section get-involved">
+        <h2 class="section-title">Get Involved</h2>
+        <p style="font-size: 1.2rem; max-width: 800px; margin: 0 auto 2rem;">Be Part of the Change</p>
+        
+        <div class="involvement-grid">
+            <div class="involvement-card">
+                <h3>As a Company</h3>
+                <p>Partner with ISPF through CSR collaborations. Fund experiential STEM programmes, sponsor activity kits, or support teacher training initiatives.</p>
+                <a href="#contact" class="cta-button" style="margin-top: 1rem; display: inline-block;">Partner With Us</a>
+            </div>
+            <div class="involvement-card">
+                <h3>As an NGO</h3>
+                <p>Collaborate to scale experiential learning. Co-implement STEM initiatives and leverage our curriculum and impact measurement systems.</p>
+                <a href="#contact" class="cta-button" style="margin-top: 1rem; display: inline-block;">Collaborate</a>
+            </div>
+            <div class="involvement-card">
+                <h3>As an Individual</h3>
+                <p>Your support can transform a child's learning journey. Donate, volunteer, or mentor students to make a lasting impact.</p>
+                <a href="#contact" class="cta-button" style="margin-top: 1rem; display: inline-block;">Donate/Volunteer</a>
+            </div>
+            <div class="involvement-card">
+                <h3>As a Team Member</h3>
+                <p>Join our mission. Work on meaningful projects that blend education, technology, and social impact.</p>
+                <a href="#contact" class="cta-button" style="margin-top: 1rem; display: inline-block;">Explore Careers</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <h2 class="section-title">Contact Us</h2>
+        <form class="contact-form" onsubmit="handleSubmit(event)">
+            <div class="form-group">
+                <label for="name">Name *</label>
+                <input type="text" id="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email *</label>
+                <input type="email" id="email" required>
+            </div>
+            <div class="form-group">
+                <label for="inquiry-type">Inquiry Type *</label>
+                <select id="inquiry-type" required>
+                    <option value="">Select...</option>
+                    <option value="csr">CSR Partnership</option>
+                    <option value="ngo">NGO Collaboration</option>
+                    <option value="volunteer">Volunteer</option>
+                    <option value="donate">Donation</option>
+                    <option value="career">Career</option>
+                    <option value="general">General Inquiry</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="message">Message *</label>
+                <textarea id="message" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="submit-button">Send Message</button>
+        </form>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <h3>Innovation and Science Promotion Foundation (ISPF)</h3>
+            <p style="margin: 1rem 0;">Empowering Teachers. Inspiring Learners.</p>
+            <p>Email: info@ispf.in | WhatsApp: +917483945803</p>
+            <p style="margin-top: 2rem; font-size: 0.9rem;">&copy; 2024 ISPF. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function handleSubmit(e) {
+            e.preventDefault();
+            alert('Thank you for your message! We will get back to you soon.');
+            e.target.reset();
+        }
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
